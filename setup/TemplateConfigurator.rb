@@ -91,6 +91,7 @@ module Pod
       replace_variables_in_files
       clean_template_files
       rename_template_files
+      copy_rename_custom_template_files
       add_pods_to_podfile
       customise_prefix
       rename_classes_folder
@@ -222,5 +223,18 @@ module Pod
     end
 
     #----------------------------------------#
+    
+    def copy_rename_custom_template_files
+        #context模块
+#        context_h_path = "custom_templates/Context/${POD_NAME}Context.h".gsub!("${POD_NAME}", @pod_name)
+        context_h_text = File.read("custom_templates/Context/Context.h")
+        context_h_text.gsub!("${POD_NAME}", @pod_name)
+        context_h_text.gsub!("${USER_NAME}", user_name)
+        context_h_text.gsub!("${YEAR}", year)
+        context_h_text.gsub!("${DATE}", date)
+        FileUtils.mv "custom_templates/Context/Context.h", "Pod/Classes/Context/#{pod_name}Context.h"
+
+    end
+    
   end
 end
