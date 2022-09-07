@@ -121,7 +121,7 @@ module Pod
     end
 
     def clean_template_files
-      ["./**/.gitkeep", "configure", "_CONFIGURE.rb", "README.md", "LICENSE", "templates", "setup", "CODE_OF_CONDUCT.md"].each do |asset|
+      ["./**/.gitkeep", "configure", "_CONFIGURE.rb", "README.md", "LICENSE", "templates", "setup", "CODE_OF_CONDUCT.md","custom_templates"].each do |asset|
         `rm -rf #{asset}`
       end
     end
@@ -227,11 +227,14 @@ module Pod
     def copy_rename_custom_template_files
         #context模块
 #        context_h_path = "custom_templates/Context/${POD_NAME}Context.h".gsub!("${POD_NAME}", @pod_name)
-        context_h_text = File.read("custom_templates/Context/Context.h")
+        file_name = "custom_templates/Context/Context.h"
+        context_h_text = File.read(file_name)
         context_h_text.gsub!("${POD_NAME}", @pod_name)
         context_h_text.gsub!("${USER_NAME}", user_name)
         context_h_text.gsub!("${YEAR}", year)
         context_h_text.gsub!("${DATE}", date)
+        File.open(file_name, "w") { |file| file.puts text }
+
         FileUtils.mv "custom_templates/Context/Context.h", "Pod/Classes/Context/#{pod_name}Context.h"
 
     end
