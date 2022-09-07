@@ -249,7 +249,7 @@ module Pod
         context_h_text.gsub!("${USER_NAME}", user_name)
         context_h_text.gsub!("${YEAR}", year)
         context_h_text.gsub!("${DATE}", date)
-        File.open(file_name, "w") { |file| file.puts context_h_text }
+        File.open(file_path, "w") { |file| file.puts context_h_text }
         FileUtils.mv file_path, copy_to_path
     end
     
