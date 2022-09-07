@@ -2,7 +2,7 @@
 //  ${POD_NAME}Context.h
 //  ${POD_NAME}
 //
-//  Created by ${USER_NAME} on ${YEAR}${DATE}.
+//  Created by ${USER_NAME} on ${DATE}.
 //
 
 #import <Foundation/Foundation.h>

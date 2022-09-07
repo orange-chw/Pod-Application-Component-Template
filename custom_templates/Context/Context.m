@@ -2,7 +2,7 @@
 //  ${POD_NAME}Context.m
 //  ${POD_NAME}
 //
-//  Created by ${USER_NAME} on ${YEAR}${DATE}.
+//  Created by ${USER_NAME} on ${DATE}.
 //
 
 #import "${POD_NAME}Context.h"
@@ -10,7 +10,6 @@
 @implementation ${POD_NAME}Context
 #pragma mark -获取图片-
 +(UIImage *)imageNamed:(NSString *)name{
-    NSBundle *resourceBundle = [NSBundle bundleWithURL:bundleURL];
     UIImage *image = [UIImage imageNamed:name inBundle:[self getPlatformBundle] compatibleWithTraitCollection:nil];
     return image;
 }

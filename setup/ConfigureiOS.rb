@@ -79,7 +79,6 @@ module Pod
       # There has to be a single file in the Classes dir
       # or a framework won't be created, which is now default
       `mkdir Pod/Classes/Context`
-#      `touch Pod/Classes/Context/#{POD_NAME}.m`
 
       `mkdir Pod/Classes/Resource`
       `touch Pod/Classes/Resource/ReplaceMe.m`
@@ -88,7 +87,6 @@ module Pod
       `touch Pod/Classes/Tool/ReplaceMe.m`
 
       `mkdir Pod/Classes/Route`
-      `touch Pod/Classes/Route/ReplaceMe.m`
 
       `mkdir Pod/Classes/Service`
       `touch Pod/Classes/Service/ReplaceMe.m`

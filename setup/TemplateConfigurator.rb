@@ -215,7 +215,7 @@ module Pod
     end
 
     def date
-      Time.now.strftime "%m/%d/%Y"
+      Time.now.strftime "%Y/%m/%d"
     end
 
     def podfile_path
@@ -225,21 +225,19 @@ module Pod
     #----------------------------------------#
     
     def copy_rename_custom_template_files
-        #context模块
-#        context_h_path = "custom_templates/Context/${POD_NAME}Context.h".gsub!("${POD_NAME}", @pod_name)
-#        file_name = "custom_templates/Context/Context.h"
-#        context_h_text = File.read(file_name)
-#        context_h_text.gsub!("${POD_NAME}", @pod_name)
-#        context_h_text.gsub!("${USER_NAME}", user_name)
-#        context_h_text.gsub!("${YEAR}", year)
-#        context_h_text.gsub!("${DATE}", date)
-#        File.open(file_name, "w") { |file| file.puts context_h_text }
-#
-#        FileUtils.mv "custom_templates/Context/Context.h", "Pod/Classes/Context/#{pod_name}Context.h"
-        file_replace_content_copy_to_path("custom_templates/Context/Context.h", "Pod/Classes/Context/#{pod_name}Context.h")
-        file_replace_content_copy_to_path("custom_templates/Context/Context.m", "Pod/Classes/Context/#{pod_name}Context.m")
+        #Context模块
+        context_path_prefix = "custom_templates/Context/Context"
+        content_copy_to_path_prefix = "Pod/Classes/Context/#{pod_name}Context";
+        file_replace_content_copy_to_path(context_path_prefix+".h", content_copy_to_path_prefix+".h")
+        file_replace_content_copy_to_path(context_path_prefix+".m", content_copy_to_path_prefix+".m")
 
-#        `rm -rf #{asset}`
+        #Route模块
+        route_path_prefix = "custom_templates/Route/Target"
+        route_copy_to_path_prefix = "Pod/Classes/Route/Target_#{pod_name}";
+        file_replace_content_copy_to_path(route_path_prefix+".h", route_copy_to_path_prefix+".h")
+        file_replace_content_copy_to_path(route_path_prefix+".m", route_copy_to_path_prefix+".m")
+        
+        #copy结束，删除文件夹
         `rm -rf custom_templates`
     end
     
