@@ -86,7 +86,7 @@ module Pod
 #            when :objc
 #              ConfigureIOS.perform(configurator: self)
 #          end
-      end
+#      end
 
       replace_variables_in_files
       clean_template_files
