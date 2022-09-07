@@ -227,17 +227,30 @@ module Pod
     def copy_rename_custom_template_files
         #context模块
 #        context_h_path = "custom_templates/Context/${POD_NAME}Context.h".gsub!("${POD_NAME}", @pod_name)
-        file_name = "custom_templates/Context/Context.h"
-        context_h_text = File.read(file_name)
+#        file_name = "custom_templates/Context/Context.h"
+#        context_h_text = File.read(file_name)
+#        context_h_text.gsub!("${POD_NAME}", @pod_name)
+#        context_h_text.gsub!("${USER_NAME}", user_name)
+#        context_h_text.gsub!("${YEAR}", year)
+#        context_h_text.gsub!("${DATE}", date)
+#        File.open(file_name, "w") { |file| file.puts context_h_text }
+#
+#        FileUtils.mv "custom_templates/Context/Context.h", "Pod/Classes/Context/#{pod_name}Context.h"
+        file_replace_content_copy_to_path("custom_templates/Context/Context.h", "Pod/Classes/Context/#{pod_name}Context.h")
+        file_replace_content_copy_to_path("custom_templates/Context/Context.m", "Pod/Classes/Context/#{pod_name}Context.m")
+
+#        `rm -rf #{asset}`
+        `rm -rf custom_templates`
+    end
+    
+    def file_replace_content_copy_to_path(file_path, copy_to_path)
+        context_h_text = File.read(file_path)
         context_h_text.gsub!("${POD_NAME}", @pod_name)
         context_h_text.gsub!("${USER_NAME}", user_name)
         context_h_text.gsub!("${YEAR}", year)
         context_h_text.gsub!("${DATE}", date)
         File.open(file_name, "w") { |file| file.puts context_h_text }
-
-        FileUtils.mv "custom_templates/Context/Context.h", "Pod/Classes/Context/#{pod_name}Context.h"
-#        `rm -rf #{asset}`
-        `rm -rf custom_templates`
+        FileUtils.mv file_path, copy_to_path
     end
     
   end
