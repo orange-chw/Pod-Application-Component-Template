@@ -78,15 +78,30 @@ module Pod
 
       # There has to be a single file in the Classes dir
       # or a framework won't be created, which is now default
-      `touch Pod/Classes/Context/ReplaceMe.m`
+      'mkdir Pod/Classes/Context/'
+      `touch Pod/Classes/Context/${POD_NAME}.m`
+
+      'mkdir Pod/Classes/Resource/'
       `touch Pod/Classes/Resource/ReplaceMe.m`
+
+      'mkdir Pod/Classes/Tool/'
       `touch Pod/Classes/Tool/ReplaceMe.m`
-      `touch Pod/Classes/Tool/ReplaceMe.m`
+
+      'mkdir Pod/Classes/Route/'
       `touch Pod/Classes/Route/ReplaceMe.m`
+
+      'mkdir Pod/Classes/Service/'
       `touch Pod/Classes/Service/ReplaceMe.m`
+
+      'mkdir Pod/Classes/ServiceBusiness/'
       `touch Pod/Classes/ServiceBusiness/ReplaceMe.m`
+
+      'mkdir Pod/Classes/CoreService/'
       `touch Pod/Classes/CoreService/ReplaceMe.m`
+
+      'mkdir Pod/Classes/Application/'
       `touch Pod/Classes/Application/ReplaceMe.m`
+      
       
       `mv ./templates/ios/* ./`
 
