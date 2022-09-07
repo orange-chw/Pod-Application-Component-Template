@@ -233,7 +233,7 @@ module Pod
         context_h_text.gsub!("${USER_NAME}", user_name)
         context_h_text.gsub!("${YEAR}", year)
         context_h_text.gsub!("${DATE}", date)
-        File.open(file_name, "w") { |file| file.puts text }
+        File.open(file_name, "w") { |file| file.puts context_h_text }
 
         FileUtils.mv "custom_templates/Context/Context.h", "Pod/Classes/Context/#{pod_name}Context.h"
 #        `rm -rf #{asset}`
