@@ -78,15 +78,17 @@ module Pod
 
       # There has to be a single file in the Classes dir
       # or a framework won't be created, which is now default
+      
+      #带模版类的模块
       `mkdir Pod/Classes/Context`
-
+      `mkdir Pod/Classes/Route`
+      
+      #不带模版类的模块
       `mkdir Pod/Classes/Resource`
       `touch Pod/Classes/Resource/ReplaceMe.m`
 
       `mkdir Pod/Classes/Tool`
       `touch Pod/Classes/Tool/ReplaceMe.m`
-
-      `mkdir Pod/Classes/Route`
 
       `mkdir Pod/Classes/Service`
       `touch Pod/Classes/Service/ReplaceMe.m`
