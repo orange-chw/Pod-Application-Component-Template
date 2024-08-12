@@ -99,7 +99,7 @@ RUBY
         # change app file prefixes
         ["CPDAppDelegate.h", "CPDAppDelegate.m", "CPDViewController.h", "CPDViewController.m"].each do |file|
           before = project_folder + "/PROJECT/" + file
-          next unless File.exists? before
+          next unless File.directory? before
 
           after = project_folder + "/PROJECT/" + file.gsub("CPD", prefix)
           File.rename before, after
@@ -108,7 +108,7 @@ RUBY
         # rename project related files
         ["PROJECT-Info.plist", "PROJECT-Prefix.pch", "PROJECT.entitlements"].each do |file|
           before = project_folder + "/PROJECT/" + file
-          next unless File.exists? before
+          next unless File.directory? before
 
           after = project_folder + "/PROJECT/" + file.gsub("PROJECT", @configurator.pod_name)
           File.rename before, after
